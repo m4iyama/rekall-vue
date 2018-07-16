@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <div v-if="errorMessage">{{ errorMessage }}</div>
-
+  <div class="container">
     <login-form v-if="showLoginForm"/>
     <register-form v-else/>
   </div>

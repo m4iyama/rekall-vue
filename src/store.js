@@ -43,12 +43,13 @@ const authentication = {
     },
   },
   actions: {
-    async register({ commit, dispatch }, { username, email, password }) {
+    async register({ commit, dispatch }, { username, email, password, passwordConfirmation }) {
       try {
         if (username.length == 0) throw new Error('The username is empty');
         if (!username.match(/^[a-zA-Z0-9_]*$/)) throw new Error('Only a-z, A-Z, 0-9 and underscore are available for username');
         const snapshot = firestore.collection('users').where('username', '==', username).get();
         if (snapshot.size > 0) throw new Error(`The username '${username}' is already used`);
+        if (password !== passwordConfirmation) throw new Error('Make sure that the password and password confirmation are the same');
 
         const response = await auth.createUserWithEmailAndPassword(email, password);
 

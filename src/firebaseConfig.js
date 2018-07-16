@@ -16,13 +16,7 @@ firestore.settings({ timestampsInSnapshots: true });
 const auth = Firebase.auth();
 auth.useDeviceLanguage();
 
-const authProviders = {
-  google: new Firebase.auth.GoogleAuthProvider(),
-  twitter: new Firebase.auth.TwitterAuthProvider(),
-};
-
 export {
   firestore,
   auth,
-  authProviders,
 };
