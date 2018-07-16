@@ -97,9 +97,25 @@ const authentication = {
   },
 };
 
+const postForm = {
+  namespaced: true,
+  state: {
+    modalActive: false,
+  },
+  mutations: {
+    openPostModal(state) {
+      state.modalActive = true;
+    },
+    closePostModal(state) {
+      state.modalActive = false;
+    },
+  },
+};
+
 const store = new Vuex.Store({
   modules: {
     authentication,
+    postForm,
   },
 });
 
